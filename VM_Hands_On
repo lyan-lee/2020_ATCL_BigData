@@ -1,0 +1,51 @@
+##IMAGE_SOURCE
+
+NAMENODE : https://drive.google.com/file/d/1ONOFMtwIQxhYAoqcuKrseXPb2S5KXf35/view?usp=sharing
+DATANODE1 : https://drive.google.com/file/d/1gNKftzDqaz5YfKaE2XFBX5_YMpkOU0Pd/view?usp=sharing
+DATANODE2 : https://drive.google.com/file/d/18HjOEqPRnLCx-VPVdfkfXceZGWAy4vmP/view?usp=sharing
+
+
+등록된 네트워크가 없으면 <만들기>를 클릭하여 네트워크 생성
+
+수동으로 어댑터 설정
+
+IPv4 주소 : 192.168.137.1
+서브넷 마스크 : 255.255.255.0
+
+DHP 서버는 사용하지 않음 (체크 해제)
+
+
+어뎁터1 : 호스트 전용
+어뎁터2 : bridge (접속불가시 NAT로 설정, 단 port powarding 필요)
+
+ID : root
+PW : skcc1234
+
+ip addr
+
+enp0s8에 10번 대역이 설정되었는지 확인
+enp0s17에 192.168.137.100이 매핑 되었는지 확인
+
+외부 네트워크와 통신이 되는지 확인
+
+서로 통신 확인
+
+ping skcc
+ping skcc-data01
+ping skcc-data02
+
+# 하둡 설치
+wget http://apache.mirror.cdnetworks.com/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
+
+# JDK 설치
+
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre 
+
+
+yum install java-1.8.0-openjdk-devel
+
+
+
+
+
+
