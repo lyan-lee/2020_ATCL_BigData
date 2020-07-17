@@ -15,10 +15,16 @@
 
 #### 3) 네트워크 설정
 
-- 호스트 전용 어뎁터 신규 생성 (VM
+<img src="/VM_Hands_On/images/1-1.png"  width="400" /> <img src="/VM_Hands_On/images/1-2.png"  width="400" />
 
 
-![ssh](/VM_Hands_On/images/1-1.png | width=100)
+- VirtureBox 네트워크 설정에서 호스트 전용 어뎁터 신규 생성
+````
+수동으로 어댑터 설정
 
+IPv4 주소 : 192.168.137.1
+서브넷 마스크 : 255.255.255.0
 
-![](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png | width=100)
+DHP 서버는 사용하지 않음 (체크 해제)
+````
+
