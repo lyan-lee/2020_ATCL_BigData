@@ -24,9 +24,9 @@
 
 ### 3) VM Image 다운로드
 
-- NameNode : [다운로드](https://drive.google.com/file/d/1ONOFMtwIQxhYAoqcuKrseXPb2S5KXf35/view?usp=sharing){:target="_blank" rel="noopener"}
-- DataNode 01 : [다운로드](https://drive.google.com/file/d/1gNKftzDqaz5YfKaE2XFBX5_YMpkOU0Pd/view?usp=sharing){:target="_blank" rel="noopener"}
-- DataNode 02 : [다운로드](https://drive.google.com/file/d/18HjOEqPRnLCx-VPVdfkfXceZGWAy4vmP/view?usp=sharing){:target="_blank" rel="noopener"}
+- NameNode : [다운로드](https://drive.google.com/file/d/1ONOFMtwIQxhYAoqcuKrseXPb2S5KXf35/view?usp=sharing)
+- DataNode 01 : [다운로드](https://drive.google.com/file/d/1gNKftzDqaz5YfKaE2XFBX5_YMpkOU0Pd/view?usp=sharing)
+- DataNode 02 : [다운로드](https://drive.google.com/file/d/18HjOEqPRnLCx-VPVdfkfXceZGWAy4vmP/view?usp=sharing)
 
 
 ### 4) VM Image 불러오기 후 네트워크 설정 
@@ -77,14 +77,20 @@
 
 ````
 [root@skcc ~]# yum install java-1.8.0-openjdk-devel
+````
 
+| <img src="/VM_Hands_On/images/2-2.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
+````
 [root@skcc ~]# java -version
 ````
+
 - 설치경로 : /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre 
 
 #### (2) JAVA_HOME 설정
 
-| <img src="/VM_Hands_On/images/2-2.png"  width="800" /> | 
+| <img src="/VM_Hands_On/images/2-3.png"  width="800" /> | 
 | ------------------------------------------------- | 
 
 ````
