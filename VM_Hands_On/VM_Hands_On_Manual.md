@@ -1,6 +1,7 @@
 # Hadoop SETUP Hands-On (on VirtualBox) 
 
-- NameNode 1대, DataNode 2대 클러스터 구성
+- NameNode 1대, DataNode 2대 클러스터 구성  
+        
 
 ## 1. VirtualBox 설정
 
@@ -63,6 +64,7 @@
 
 | <img src="/VM_Hands_On/images/1-6.png"  width="800" /> | 
 | ------------------------------------------------- | 
+
 ````
 [root@skcc ~]# ping google.com
 ````
@@ -102,7 +104,6 @@
 
 export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
-
 ````
 
 ### 2) Hadoop 계정 생성
@@ -296,6 +297,12 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 [hadoop@skcc ~]$ start-yarn.sh
 ````
 
+| <img src="/VM_Hands_On/images/3-7.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
+````
+[hadoop@skcc ~]$ mr-jobhistory-daemon.sh start historyserver
+````
 
 #### (2) Hadoop 데몬 정상기동여부 확인
 
@@ -309,11 +316,30 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 [hadoop@skcc ~]$ jps
 ````
 
+#### (3) WEB UI
+
+- NameNode : localhost:50070
+
+| <img src="/VM_Hands_On/images/3-5.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
+- ResourceManager : localhost:8088
+
+| <img src="/VM_Hands_On/images/3-6.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
+- HistoryServer : localhost:19888
+
+| <img src="/VM_Hands_On/images/3-9.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
+
 #### (3) 중지
 
 ````
 [hadoop@skcc ~]$ stop-dfs.sh
 [hadoop@skcc ~]$ stop-yarn.sh
+[hadoop@skcc ~]$ mr-jobhistory-daemon.sh stop historyserver
 ````
 
 
