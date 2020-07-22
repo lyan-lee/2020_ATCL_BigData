@@ -24,9 +24,9 @@
 
 ### 3) VM Image 다운로드
 
-- NameNode : [다운로드](https://drive.google.com/file/d/1ONOFMtwIQxhYAoqcuKrseXPb2S5KXf35/view?usp=sharing)
-- DataNode 01 : [다운로드](https://drive.google.com/file/d/1gNKftzDqaz5YfKaE2XFBX5_YMpkOU0Pd/view?usp=sharing)
-- DataNode 02 : [다운로드](https://drive.google.com/file/d/18HjOEqPRnLCx-VPVdfkfXceZGWAy4vmP/view?usp=sharing)
+- NameNode : [다운로드](https://drive.google.com/file/d/1ONOFMtwIQxhYAoqcuKrseXPb2S5KXf35/view?usp=sharing){:target="_blank" rel="noopener"}
+- DataNode 01 : [다운로드](https://drive.google.com/file/d/1gNKftzDqaz5YfKaE2XFBX5_YMpkOU0Pd/view?usp=sharing){:target="_blank" rel="noopener"}
+- DataNode 02 : [다운로드](https://drive.google.com/file/d/18HjOEqPRnLCx-VPVdfkfXceZGWAy4vmP/view?usp=sharing){:target="_blank" rel="noopener"}
 
 
 ### 4) VM Image 불러오기 후 네트워크 설정 
