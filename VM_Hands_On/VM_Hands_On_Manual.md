@@ -68,6 +68,8 @@
 
 ## 2. 사전작업
 
+- NameNode, DataNode 모든 서버에서 작업 필요.
+
 ### 1) JAVA 설치 
 
 #### (1) JDK 1.8 설치
@@ -105,6 +107,9 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 
 #### (1) 계정 생성 및 비밀번호 설정
 
+| <img src="/VM_Hands_On/images/2-4.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
 ````
 [root@skcc ~]# useradd hadoop
 
@@ -113,11 +118,21 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 
 #### (2) 로그인
 
+
+| <img src="/VM_Hands_On/images/2-5.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
+
 ````
 [root@skcc ~]# su hadoop
 ````
 
 #### (3) ssh-key 생성
+
+
+| <img src="/VM_Hands_On/images/2-6.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
 
 ````
 [hadoop@skcc]$ ssh-keygen -t rsa
@@ -126,6 +141,9 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 ````
 
 #### (4) Datanode에 key 복사
+
+| <img src="/VM_Hands_On/images/2-7.png"  width="800" /> | 
+| ------------------------------------------------- | 
 
 ````
 [hadoop@skcc ~]$ ssh hadoop@skcc-data01 'mkdir -p ~/.ssh'
@@ -153,11 +171,37 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 [hadoop@skcc ~]$ tar xvf hadoop-2.8.5.tar.gz
 ````
 
-### 2) 하둡 클러스터 설정
+### 2) 하둡 환경설정
+
+````
+[hadoop@skcc ~]$ vi ~/.bash_profile
+
+export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
+export HADOOP_HOME=/home/hadoop/hadoop-2.8.5
+
+PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+````
+
+
+### 3) 하둡 클러스터 설정
 
 - 설정파일 경로 : /home/hadoop/hadoop-2.8.5/etc/hadoop
 
-#### (1) hdfs-site.xml
+#### (1) core-site.xml
+
+````
+[hadoop@skcc]$ vi core-site.xml
+
+<configuration>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://skcc/</value>
+  </property>
+</configuration>
+````
+
+#### (2) hdfs-site.xml
 
 ````
 [hadoop@skcc]$ vi hdfs-site.xml
@@ -170,7 +214,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 </configuration>
 ````
 
-#### (2) mapred-site.xml
+#### (3) mapred-site.xml
 
 ````
 [hadoop@skcc]$ vi mapred-site.xml
@@ -183,7 +227,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 </configuration>
 ````
 
-#### (3) yarn-site.xml
+#### (4) yarn-site.xml
 
 ````
 [hadoop@skcc]$ vi yarn-site.xml
@@ -202,18 +246,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 </configuration>
 ````
 
-#### (4) core-site.xml
 
-````
-[hadoop@skcc]$ vi core-site.xml
-
-<configuration>
-  <property>
-    <name>fs.defaultFS</name>
-    <value>hdfs://skcc/</value>
-  </property>
-</configuration>
-````
 
 #### (5) slaves
 
@@ -235,9 +268,7 @@ skcc-data02
 export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 ````
 
-### 2) 설정파일 
-
-- 설정파일 복사
+#### (7) 클러스터 설정파일 복사 
 
 ````
 [hadoop@skcc ~]$ scp /home/hadoop/hadoop-2.8.5/etc/hadoop/* hadoop@skcc-data01:/home/hadoop/hadoop-2.8.5/etc/hadoop
