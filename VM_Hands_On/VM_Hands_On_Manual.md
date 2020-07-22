@@ -1,5 +1,7 @@
 # Hadoop SETUP Hands-On (on VirtualBox) 
 
+- NameNode 1대, DataNode 2대 클러스터 구성
+
 ## 1. VirtualBox 설정
 
 ### 1) VirtualBox 설치
@@ -159,7 +161,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 - 필요시 Datanode -> Namenode, Datanode -> Datanode 에도 복사
 
 
-## 3. 하둡 설치
+## 3. Hadoop
 
 ### 1) 설치파일 다운로드
 
@@ -171,7 +173,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 [hadoop@skcc ~]$ tar xvf hadoop-2.8.5.tar.gz
 ````
 
-### 2) 하둡 환경설정
+### 2) Hadoop 환경설정
 
 ````
 [hadoop@skcc ~]$ vi ~/.bash_profile
@@ -183,7 +185,7 @@ PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 ````
 
-### 3) 하둡 클러스터 설정
+### 3) Hadoop 클러스터 설정
 
 - 설정파일 경로 : /home/hadoop/hadoop-2.8.5/etc/hadoop
 
@@ -246,8 +248,6 @@ PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 </configuration>
 ````
 
-
-
 #### (5) slaves
 
 - datanode 리스트 
@@ -284,7 +284,12 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 ````
 
 
-### 5) 하둡 구동
+### 5) Hadoop 구동
+
+#### (1) 구동
+
+| <img src="/VM_Hands_On/images/3-1.png"  width="800" /> | 
+| ------------------------------------------------- | 
 
 ````
 [hadoop@skcc ~]$ start-dfs.sh
@@ -292,13 +297,19 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 ````
 
 
-### 6) 하둡 데몬 정상기동여부 확인
+#### (2) Hadoop 데몬 정상기동여부 확인
+
+| <img src="/VM_Hands_On/images/3-2.png"  width="800" /> | 
+| ------------------------------------------------- | 
+| <img src="/VM_Hands_On/images/3-3.png"  width="800" /> | 
+| <img src="/VM_Hands_On/images/3-4.png"  width="800" /> | 
+
 
 ````
 [hadoop@skcc ~]$ jps
 ````
 
-### 7) 하둡 중지
+#### (3) 중지
 
 ````
 [hadoop@skcc ~]$ stop-dfs.sh
