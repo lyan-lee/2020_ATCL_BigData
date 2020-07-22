@@ -183,7 +183,6 @@ PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 ````
 
-
 ### 3) 하둡 클러스터 설정
 
 - 설정파일 경로 : /home/hadoop/hadoop-2.8.5/etc/hadoop
@@ -217,6 +216,7 @@ PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 #### (3) mapred-site.xml
 
 ````
+[hadoop@skcc]$ cp mapred-site.xml.template mapred-site.xml
 [hadoop@skcc]$ vi mapred-site.xml
 
 <configuration>
@@ -275,5 +275,35 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 
 [hadoop@skcc ~]$ scp /home/hadoop/hadoop-2.8.5/etc/hadoop/* hadoop@skcc-data02:/home/hadoop/hadoop-2.8.5/etc/hadoop
 ````
+
+
+### 4) HDFS 파일 시스템 포맷하기 (NameNode)
+
+````
+[hadoop@skcc ~]$ hdfs namenode -format
+````
+
+
+### 5) 하둡 구동
+
+````
+[hadoop@skcc ~]$ start-dfs.sh
+[hadoop@skcc ~]$ start-yarn.sh
+````
+
+
+### 6) 하둡 데몬 정상기동여부 확인
+
+````
+[hadoop@skcc ~]$ jps
+````
+
+### 7) 하둡 중지
+
+````
+[hadoop@skcc ~]$ stop-dfs.sh
+[hadoop@skcc ~]$ stop-yarn.sh
+````
+
 
 
