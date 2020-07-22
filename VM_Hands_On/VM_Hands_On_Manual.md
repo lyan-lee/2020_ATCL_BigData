@@ -92,9 +92,19 @@
 [root@skcc ~]# java -version
 ````
 
-- 설치경로 : /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/jre 
+#### (3) JAVA 설치경로 확인
 
-#### (2) JAVA_HOME 설정
+````
+[root@skcc ~]# which javac
+/usr/bin/javac
+
+[root@skcc ~]# readlink -f /usr/bin/javac
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/bin/javac
+````
+
+- 설치경로 : /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
+
+#### (4) bash_profile에 java_home경로 export
 
 | <img src="/VM_Hands_On/images/2-3.png"  width="800" /> | 
 | ------------------------------------------------- | 
@@ -104,6 +114,12 @@
 
 export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
+````
+
+#### (5) bash_profile 값 적용
+
+````
+[root@skcc ~]# source ~/.bash_profile
 ````
 
 ### 2) Hadoop 계정 생성
@@ -160,6 +176,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin:$JAVA_HOME/bin
 
 - Namenode -> Datanode 접속시 로그인 불필요
 - 필요시 Datanode -> Namenode, Datanode -> Datanode 에도 복사
+
 
 
 ## 3. Hadoop
@@ -318,23 +335,23 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 
 #### (3) WEB UI
 
-- NameNode : localhost:50070
+- NameNode : http://localhost:50070
 
 | <img src="/VM_Hands_On/images/3-5.png"  width="800" /> | 
 | ------------------------------------------------- | 
 
-- ResourceManager : localhost:8088
+- ResourceManager : http://localhost:8088
 
 | <img src="/VM_Hands_On/images/3-6.png"  width="800" /> | 
 | ------------------------------------------------- | 
 
-- HistoryServer : localhost:19888
+- HistoryServer : http://localhost:19888
 
-| <img src="/VM_Hands_On/images/3-9.png"  width="800" /> | 
+| <img src="/VM_Hands_On/images/3-8.png"  width="800" /> | 
 | ------------------------------------------------- | 
 
 
-#### (3) 중지
+#### (4) 중지
 
 ````
 [hadoop@skcc ~]$ stop-dfs.sh
@@ -343,4 +360,35 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64
 ````
 
 
+### 6) Hadoop 예제
 
+- 파일을 HDFS에 저장 후 WEB UI 통해서 확인하기
+- Target Path : hdfs:///data/1500000_Sales_Records.csv
+- 예제파일 : [다운로드](https://drive.google.com/file/d/1LAjD-n4lON0wuiI7mk2CBdbSC944E8Xx/view?usp=sharing)
+
+#### (1) data 디렉토리 생성
+
+| <img src="/VM_Hands_On/images/3-9.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
+````
+[hadoop@skcc ~]$ hdfs dfs -mkdir /data
+[hadoop@skcc ~]$ hdfs dfs -chmod 755 /data
+````
+
+#### (2) HDFS 저장
+
+| <img src="/VM_Hands_On/images/3-10.png"  width="800" /> | 
+| ------------------------------------------------- | 
+
+````
+[hadoop@skcc ~]$ hdfs dfs -put ~/1500000_Sales_Records.csv /data 
+[hadoop@skcc ~]$ hdfs dfs -ls /data
+````
+
+#### (3) WEB UI 확인
+
+-  NameNode : http://localhost:50070/explorer.html#/data
+
+| <img src="/VM_Hands_On/images/3-11.png"  width="800" /> | 
+| ------------------------------------------------- | 
