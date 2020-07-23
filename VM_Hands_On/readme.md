@@ -12,12 +12,12 @@
 
 ### PART3 - Hadoop 설치
 
-- [바로가기](./3.hadoop.md)
+- [바로가기](./3.Hadoop.md)
 
 ### PART4 - Zookeeper 설치
 
-- [바로가기](./4.zookeeper.md)
+- [바로가기](./4.Zookeeper.md)
 
 ### PART5 - Kafka 설치
 
-- [바로가기](./5.kafka.md)
+- [바로가기](./5.Kafka.md)
