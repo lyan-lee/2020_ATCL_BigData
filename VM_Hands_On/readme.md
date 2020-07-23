@@ -14,10 +14,10 @@
 
 - [바로가기](./3.hadoop.md)
 
-### PART4 - Kafka 설치
+### PART4 - Zookeeper 설치
 
-- [바로가기](./)
+- [바로가기](./4.zookeeper.md)
 
-### PART5 - Zookeeper 설치
+### PART5 - Kafka 설치
 
-- [바로가기](./)
+- [바로가기](./5.kafka.md)
