@@ -133,12 +133,40 @@
 #### 모니터링 UI
 -  X-Pack 사용시 UI제공 (kibana)
 - Metricbeat collection
+
 Metricbeat collects monitoring data from your Logstash instance and sends it directly to your monitoring cluster.
 - Legacy collection
+
 Legacy collectors send monitoring data to your production cluster.
 
 #### API 제공
+
 - Node Info API
+
+pipelines : Gets pipeline-specific information and settings for each pipeline.
+
+os : Gets node-level info about the OS.
+
+jvm : Gets node-level JVM info, including info about threads.
+
 - Plugins Info API
+
+The plugins info API gets information about all Logstash plugins that are currently installed. This API basically returns the output of running the bin/logstash-plugin list --verbose command.
+
 - Node Stats API
+
+jvm : Gets JVM stats, including stats about threads, memory usage, garbage collectors, and uptime.
+
+process : Gets process stats, including stats about file descriptors, memory consumption, and CPU usage.
+
+events : Gets event-related statistics for the Logstash instance (regardless of how many pipelines were created and destroyed).
+
+pipelines : Gets runtime stats about each Logstash pipeline.
+
+reloads : Gets runtime stats about config reload successes and failures.
+
+os : Gets runtime stats about cgroups when Logstash is running in a container.
+
 - Hot Threads API
+
+The hot threads API gets the current hot threads for Logstash. A hot thread is a Java thread that has high CPU usage and executes for a longer than normal period of time.
